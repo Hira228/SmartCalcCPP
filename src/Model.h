@@ -3,6 +3,7 @@
 #include <cmath>
 #include <iostream>
 #include <stack>
+#include <vector>
 
 enum type {
   NUMBER = 2,
@@ -67,6 +68,8 @@ class Model : public parsing {
   void countDeadline();
   void annuityCredit();
   void creditPeriod();
+  std::pair<std::vector<double>, std::vector<double>> createGraph(double xValue_begin, double xValue_end, std::string math_exp_str);
+  void clearDataGraph() { x.clear(); y.clear();}
 
   // setters
   void SetDeadline(int a) { deadline = a; }
@@ -101,6 +104,8 @@ class Model : public parsing {
   std::stack<Data> reverse_polish_notation;
   std::stack<Data> stack_calculate;
   std::string answer;
+  std::vector<double> x;
+  std::vector<double> y;
   int deadline;
   double sum_percent;
   double pay;

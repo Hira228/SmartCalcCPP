@@ -22,7 +22,8 @@ class Controller {
   void diffCredit() { model->countDeadline(); }
   void anuitCredit() { model->annuityCredit(); }
   void creditTerm() { model->creditPeriod(); }
-
+  std::pair<std::vector<double>, std::vector<double>> graphPlot(double xValue_begin, double xValue_end, std::string math_exp_str) { return model->createGraph(xValue_begin, xValue_end, math_exp_str);}
+  void clearVectGraph() {model->clearDataGraph();}
   // setters
   void SetDeadline(int a) { model->SetDeadline(a); }
   void SetSumPercent(double a) { model->SetSumPercent(a); }

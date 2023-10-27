@@ -591,4 +591,28 @@ void Model::creditPeriod() {
   sum_credit_plus_sum_percent = sum_percent + sum_credit_temp_none;
 }
 
+std::pair<std::vector<double>, std::vector<double>> Model::createGraph(double xValue_begin, double xValue_end, std::string math_exp_str) {
+  double h = 0.1;
+  std::string temp_str;
+  std::string result;
+  double yValue;
+  double N = (xValue_end - xValue_begin) / h + 2;
+
+  for (double X = xValue_begin; X <= xValue_end; X += 0.1) {
+    temp_str = strWithGraph(math_exp_str, X);
+    model(temp_str);
+    result = getData();
+    if (result[0] != 'C') {
+      yValue =std::stod(result);
+      x.push_back(X);
+      y.push_back(yValue);
+    } else {
+      x.push_back(X);
+      y.push_back(std::numeric_limits<double>::quiet_NaN());
+    }
+  }
+  return std::make_pair(x, y);
+}
+
+
 }  // namespace s21

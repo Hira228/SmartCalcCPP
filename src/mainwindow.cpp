@@ -8,6 +8,7 @@
 #include "creditcalc.h"
 #include "graph.h"
 #include "ui_mainwindow.h"
+#include <QVector>
 
 MainWindow::MainWindow(s21::Controller controller, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), controller_(controller) {
@@ -124,16 +125,8 @@ void MainWindow::calc_result() {
 }
 
 void MainWindow::on_pushButton_graph_clicked() {
-  double pi = 3.14;
-  h = 0.1;
   QString ex = ui->show_res->text();
   std::string math_exp_str = ex.toStdString();
-  std::string temp_str;
-  QString Yres = NULL;
-  std::string result;
-  double yValue = 0;
-  double a_temp = 0;
-  int flag_minus = 0;
 
   QString xBegin = inputXlineEdit_min->text();
   double xValue_begin = xBegin.toDouble();
@@ -151,26 +144,18 @@ void MainWindow::on_pushButton_graph_clicked() {
 
   graph_ui->setXAxis(xValue_begin, xValue_end);
   graph_ui->setYAxis(yValue_begin, yValue_end);
+  controller_.clearVectGraph();
+  std::pair<std::vector<double>, std::vector<double>> a = controller_.graphPlot(xValue_begin, xValue_end, math_exp_str);
+QVector<double> b;
+for (const auto &value : a.first) {
+    b.append(static_cast<double>(value));
+}
 
-  N = (xValue_end - xValue_begin) / h + 2;
-
-  x.clear();
-  y.clear();
-  for (X = xValue_begin; X <= xValue_end; X += 0.1) {
-    temp_str = controller_.convertWithX(math_exp_str, X);
-    result = controller_.equal(temp_str);
-    if (result[0] != 'C') {
-      Yres = QString::fromUtf8(result.c_str());
-      yValue = Yres.toDouble();
-      x.push_back(X);
-      y.push_back(yValue);
-    } else {
-      x.push_back(X);
-      y.push_back(std::numeric_limits<double>::quiet_NaN());
-    }
-  }
-
-  graph_ui->plotGraph(x, y);
+QVector<double> c;
+for (const auto &value : a.second) {
+    c.append(static_cast<double>(value));
+}
+  graph_ui->plotGraph(b, c);
 
   graph_ui->show();
 }
