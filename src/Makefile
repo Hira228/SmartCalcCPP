@@ -29,7 +29,7 @@ ${TARGET} : $(SRCS) ${SRCS_TEST}
 	./TESTS
 
 qcustomplot:
-	@if [ ! -d QCustomPlot-library ] && [ -z "$(ls -A QCustomPlot-library)" ]; then \
+	@if [ ! -d QCustomPlot-library ] || [ -z "$(ls -A QCustomPlot-library)" ]; then \
 		git clone https://github.com/legerch/QCustomPlot-library; \
 	fi
 
@@ -53,4 +53,4 @@ build_file:
 	mkdir Build_test
 
 $(CLEAN) :
-	rm -rf html latex Build_Calc Build_test TESTS *.a *.o $(TESTS).o *.out app *.tar *.info html_report TEST/*.o *.gcno *.gcda 
+	rm -rf html latex Build_Calc Build_test TESTS *.a *.o $(TESTS).o *.out app *.tar *.info html_report TEST/*.o *.gcno *.gcda QCustomPlot-library
