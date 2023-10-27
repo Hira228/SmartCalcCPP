@@ -40,7 +40,7 @@ install: qcustomplot
 	(cd Build_Calc && make); \
 
 uninstall:
-	rm -rf Build_Calc
+	rm -rf Build_Calc QCustomPlot-library
 
 dist: |install
 	tar --totals -cvf smart_calc.tar .
