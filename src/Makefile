@@ -29,7 +29,7 @@ ${TARGET} : $(SRCS) ${SRCS_TEST}
 	./TESTS
 
 qcustomplot:
-	@if [ ! -d QCustomPlot-library ]; then \
+	@if [ ! -d QCustomPlot-library ] && [ -z "$(ls -A QCustomPlot-library)" ]; then \
 		git clone https://github.com/legerch/QCustomPlot-library; \
 	fi
 
