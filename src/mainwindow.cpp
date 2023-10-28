@@ -146,15 +146,15 @@ void MainWindow::on_pushButton_graph_clicked() {
   graph_ui->setYAxis(yValue_begin, yValue_end);
   controller_.clearVectGraph();
   std::pair<std::vector<double>, std::vector<double>> a = controller_.graphPlot(xValue_begin, xValue_end, math_exp_str);
-QVector<double> b;
-for (const auto &value : a.first) {
+  QVector<double> b;
+  for (const auto &value : a.first) {
     b.append(static_cast<double>(value));
-}
+  }
 
-QVector<double> c;
-for (const auto &value : a.second) {
+  QVector<double> c;
+  for (const auto &value : a.second) {
     c.append(static_cast<double>(value));
-}
+  }
   graph_ui->plotGraph(b, c);
 
   graph_ui->show();

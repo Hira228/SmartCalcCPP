@@ -28,13 +28,9 @@ ${TARGET} : $(SRCS) ${SRCS_TEST}
 	${CC} ${FLAGS} -o TESTS ${SRCS} ${SRCS_TEST} ${TEST_FLAGS} 
 	./TESTS
 
-# qcustomplot:
-# 	@if [ ! -d QCustomPlot-library ] || [ -z "$(ls -A QCustomPlot-library)" ]; then \
-# 		git clone https://github.com/legerch/QCustomPlot-library; \
-# 	fi
-
 install:
-	rm -rf Build_Calc; \
+	rm -rf Build_Calc QCustomPlot-library; \
+	git clone https://github.com/legerch/QCustomPlot-library; \
 	mkdir Build_Calc; \
 	(cd Build_Calc && cmake ../); \
 	(cd Build_Calc && make); \
@@ -53,4 +49,4 @@ build_file:
 	mkdir Build_test
 
 $(CLEAN) :
-	rm -rf html latex Build_Calc Build_test TESTS *.a *.o $(TESTS).o *.out app *.tar *.info html_report TEST/*.o *.gcno *.gcda QCustomPlot-library
+	rm -rf html latex Build_Calc Build_test TESTS *.a *.o $(TESTS).o *.out app *.tar *.info html_report TEST/*.o

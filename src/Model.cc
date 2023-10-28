@@ -592,11 +592,9 @@ void Model::creditPeriod() {
 }
 
 std::pair<std::vector<double>, std::vector<double>> Model::createGraph(double xValue_begin, double xValue_end, std::string math_exp_str) {
-  double h = 0.1;
   std::string temp_str;
   std::string result;
   double yValue;
-  double N = (xValue_end - xValue_begin) / h + 2;
 
   for (double X = xValue_begin; X <= xValue_end; X += 0.1) {
     temp_str = strWithGraph(math_exp_str, X);
