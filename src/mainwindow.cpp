@@ -2,13 +2,13 @@
 
 #include <QMenuBar>
 #include <QPropertyAnimation>
+#include <QVector>
 #include <QtMath>
 
 #include "Controller.h"
 #include "creditcalc.h"
 #include "graph.h"
 #include "ui_mainwindow.h"
-#include <QVector>
 
 MainWindow::MainWindow(s21::Controller controller, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), controller_(controller) {
@@ -145,7 +145,8 @@ void MainWindow::on_pushButton_graph_clicked() {
   graph_ui->setXAxis(xValue_begin, xValue_end);
   graph_ui->setYAxis(yValue_begin, yValue_end);
   controller_.clearVectGraph();
-  std::pair<std::vector<double>, std::vector<double>> a = controller_.graphPlot(xValue_begin, xValue_end, math_exp_str);
+  std::pair<std::vector<double>, std::vector<double>> a =
+      controller_.graphPlot(xValue_begin, xValue_end, math_exp_str);
   QVector<double> b;
   for (const auto &value : a.first) {
     b.append(static_cast<double>(value));

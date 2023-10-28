@@ -101,7 +101,7 @@ void CreditCalc::on_pushButton_3_clicked() {
     percent_pay = QString::number(contr_.GetSumPercent(), 'f', 2);
     sum_credit_temp = QString::number(contr_.GetSumCredit(), 'f', 2);
     percent_plus_credit =
-    QString::number(contr_.GetSumCreditPlusSumPercent(), 'f', 2);
+        QString::number(contr_.GetSumCreditPlusSumPercent(), 'f', 2);
 
     ui->label_28->setText(percent_pay);
     ui->label_29->setText(sum_credit_temp);
@@ -164,7 +164,7 @@ void CreditCalc::on_pushButton_1_clicked() {
     mounth_pay = QString::number(contr_.GetPay(), 'f', 2);
     percent_pay = QString::number(contr_.GetSumPercent(), 'f', 2);
     percent_plus_credit =
-    QString::number(contr_.GetSumCreditPlusSumPercent(), 'f', 2);
+        QString::number(contr_.GetSumCreditPlusSumPercent(), 'f', 2);
 
     ui->label_36->setText(mounth_pay);
     ui->label_35->setText(percent_pay);

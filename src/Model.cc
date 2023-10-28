@@ -591,7 +591,8 @@ void Model::creditPeriod() {
   sum_credit_plus_sum_percent = sum_percent + sum_credit_temp_none;
 }
 
-std::pair<std::vector<double>, std::vector<double>> Model::createGraph(double xValue_begin, double xValue_end, std::string math_exp_str) {
+std::pair<std::vector<double>, std::vector<double>> Model::createGraph(
+    double xValue_begin, double xValue_end, std::string math_exp_str) {
   std::string temp_str;
   std::string result;
   double yValue;
@@ -601,7 +602,7 @@ std::pair<std::vector<double>, std::vector<double>> Model::createGraph(double xV
     model(temp_str);
     result = getData();
     if (result[0] != 'C') {
-      yValue =std::stod(result);
+      yValue = std::stod(result);
       x.push_back(X);
       y.push_back(yValue);
     } else {
@@ -611,6 +612,5 @@ std::pair<std::vector<double>, std::vector<double>> Model::createGraph(double xV
   }
   return std::make_pair(x, y);
 }
-
 
 }  // namespace s21

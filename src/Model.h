@@ -68,8 +68,12 @@ class Model : public parsing {
   void countDeadline();
   void annuityCredit();
   void creditPeriod();
-  std::pair<std::vector<double>, std::vector<double>> createGraph(double xValue_begin, double xValue_end, std::string math_exp_str);
-  void clearDataGraph() { x.clear(); y.clear();}
+  std::pair<std::vector<double>, std::vector<double>> createGraph(
+      double xValue_begin, double xValue_end, std::string math_exp_str);
+  void clearDataGraph() {
+    x.clear();
+    y.clear();
+  }
 
   // setters
   void SetDeadline(int a) { deadline = a; }
